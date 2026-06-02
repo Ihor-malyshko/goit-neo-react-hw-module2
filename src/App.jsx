@@ -19,8 +19,8 @@ function App() {
     localStorage.setItem('feedback', JSON.stringify(feedback));
   }, [feedback]);
 
-  const updateFeedback = feedbackType => {
-    setFeedback(prevFeedback => ({
+  const updateFeedback = (feedbackType) => {
+    setFeedback((prevFeedback) => ({
       ...prevFeedback,
       [feedbackType]: prevFeedback[feedbackType] + 1,
     }));
@@ -35,18 +35,26 @@ function App() {
   };
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFeedback = totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
+  const positiveFeedback =
+    totalFeedback > 0 ? Math.round((feedback.good / totalFeedback) * 100) : 0;
 
   return (
     <>
       <h1>Sip Happens Café</h1>
-      <p>Please leave your feedback about our service by selecting one of the options below.</p>
-      <Options onFeedback={updateFeedback} onReset={resetFeedback} totalFeedback={totalFeedback} />
+      <p>
+        Please leave your feedback about our service by selecting one of the
+        options below.
+      </p>
+      <Options
+        onFeedback={updateFeedback}
+        onReset={resetFeedback}
+        totalFeedback={totalFeedback}
+      />
       {totalFeedback > 0 ? (
-        <Feedback 
-          good={feedback.good} 
-          neutral={feedback.neutral} 
-          bad={feedback.bad} 
+        <Feedback
+          good={feedback.good}
+          neutral={feedback.neutral}
+          bad={feedback.bad}
           totalFeedback={totalFeedback}
           positiveFeedback={positiveFeedback}
         />
