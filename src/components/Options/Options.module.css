@@ -1,0 +1,11 @@
+.options {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.options button {
+  min-width: 100px;
+}
